@@ -1,1 +1,1 @@
-# node-frontend-boilerplate
+# Frontend Boilerplate
