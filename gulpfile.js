@@ -6,6 +6,7 @@ const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 const replace = require("gulp-replace");
 const browserSync = require("browser-sync").create();
+const mode = require("gulp-mode")();
 const ejs = require("gulp-ejs");
 const concat = require("gulp-concat");
 const rename = require("gulp-rename");
@@ -23,7 +24,7 @@ const files = {
 function scssTask(cb) {
   src(files.scssSrc)
     .pipe(sass().on("error", sass.logError))
-    .pipe(postcss([autoprefixer(), cssnano()]))
+    .pipe(mode.production(postcss([autoprefixer(), cssnano()])))
     .pipe(dest(files.scssDest, { sourcemaps: "." }));
   cb();
 }
@@ -69,11 +70,13 @@ function bsServe(cb) {
 }
 
 function bsReload(cb) {
+  console.log(`Production mode: ${mode.production()}`);
   browserSync.reload();
   cb();
 }
 
 function watchTask() {
+  console.log(`Production mode: ${mode.production()}`);
   watch(
     [files.scssSrc, files.jsSrc, files.imgSrc],
     { interval: 1000, usePolling: true },
@@ -82,6 +85,7 @@ function watchTask() {
 }
 
 function bsWatchTask(cb) {
+  console.log(`Production mode: ${mode.production()}`);
   watch("index.html", bsReload);
   watch(
     [files.scssSrc, files.jsSrc, files.imgSrc],

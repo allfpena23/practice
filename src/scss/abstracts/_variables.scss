@@ -1,0 +1,13 @@
+//Breakpoints
+// 768px, 1024px, 1440px
+$breakpoints-up: (
+  "md": "48em",
+  "lg": "64em",
+  "xl": "90em",
+);
+//767px, 1023px,1439px
+$breakpoints-down: (
+  "sm": "47.9375em",
+  "md": "63.9375em",
+  "lg": "89.9375em",
+);
