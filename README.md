@@ -8,4 +8,8 @@
       C-->D;
 ```
 
-:question:
+<details>
+  <summary>:question: Click to expand!</summary>
+  
+  A: Here's the answer
+</details>
